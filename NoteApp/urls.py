@@ -16,9 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from notes.views import index
+from notes.views import index, login_view
+from notes.views import registration_view
+from notes.views import logout_view
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("notes/", index)
+    path("notes/", index),
+    path('login/', login_view),
+    path('registration/', registration_view),
+    path('logout/', logout_view),
 ]
