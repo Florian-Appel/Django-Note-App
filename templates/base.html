@@ -22,7 +22,7 @@
         .logout-desktop {
             font-weight: 600;
             font-size: 16px;
-            color: red;
+            color: white;
             text-decoration: none;
             padding: 0 24px;
         }
@@ -30,7 +30,7 @@
         .logout-smartphone{
             font-weight: 600;
             font-size: 16px;
-            color: red;
+            color: black;
             text-decoration: none;
             margin: 0;
             padding: 16px 40px;
@@ -44,7 +44,7 @@
           <div class="mdl-layout__header-row">
             <!-- Title -->
             {% if request.user.is_authenticated %}
-            <span class="mdl-layout-title">Welcome (username)</span>
+            <span class="mdl-layout-title">Welcome {{request.user}}</span>
             {% else %}
             <span class="mdl-layout-title">Welcome, please login!</span>
             {% endif %}
