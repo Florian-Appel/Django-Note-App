@@ -34,11 +34,11 @@
         <h3>Add a new Note!</h3>
     </div>
     
-    <form action="" method="">
+    <form method="post">
         {% csrf_token %}
     
         <div style="display: flex;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input name="username" class="mdl-textfield__input" type="text" id="sample3">
+            <input name="newnote" class="mdl-textfield__input" type="text" id="sample3">
             <label class="mdl-textfield__label" for="sample3">Title</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield">

@@ -4,11 +4,17 @@ from django.http.response import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.http import JsonResponse
+from django.core import serializers
 
 @login_required(login_url='/login/')
 
 
 def index(request):
+    if request.method == 'POST':
+        new_note = Notes.objects.create(text=request.POST['newnote'])
+        serializers_obj = serializers.serialize('json', [new_note])
+        return JsonResponse(serializers_obj[1:-1], safe=False)
     return render(request, 'notes/index.html')
 
 def login_view(request):
