@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Notes
+from .models import Notes, Category
 from django.http.response import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -12,10 +12,10 @@ from django.core import serializers
 
 def index(request):
     if request.method == 'POST':
-        new_note = Notes.objects.create(text=request.POST['newnote'])
-        serializers_obj = serializers.serialize('json', [new_note])
-        return JsonResponse(serializers_obj[1:-1], safe=False)
-    return render(request, 'notes/index.html')
+        Notes.objects.create(title=request.POST['title'], note=request.POST['note']) # Add input to Database
+    allNotes = Notes.objects.filter() # For Show all notes
+    return render(request, 'notes/index.html', {'notes': allNotes})
+
 
 def login_view(request):
     
