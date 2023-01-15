@@ -12,6 +12,6 @@ class Notes(models.Model):
         ("OTH", "Other"),
     )
 
-    title = models.CharField(max_length=30, default=None, blank=True, null=True)
-    note = models.CharField(max_length=100, default=None, blank=True, null=True)
+    title = models.CharField(max_length=30)
+    note = models.CharField(max_length=100)
     #category = models.CharField(max_length=20, choices=CATEGORIES, default=None, blank=True, null=True)

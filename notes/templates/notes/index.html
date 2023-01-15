@@ -27,6 +27,15 @@
     .headline{
         text-align: center;
     }
+
+    .note-field {
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0px 0px 5px 1px lightgray;
+        width: fit-content;
+        padding: 10px;
+        margin-top: 20px;
+    }
 </style>
 
 <div class="new-note">
@@ -38,11 +47,11 @@
         {% csrf_token %}
     
         <div style="display: flex;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input name="title" class="mdl-textfield__input" type="text" id="sample3">
+            <input name="title" class="mdl-textfield__input" type="text" id="sample3" required>
             <label class="mdl-textfield__label" for="sample3">Title</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield">
-            <textarea name="note" class="mdl-textfield__input" type="text" rows= "3" id="sample5"></textarea>
+            <textarea name="note" class="mdl-textfield__input" type="text" rows= "3" id="sample5" required></textarea>
             <label class="mdl-textfield__label" for="sample5">note...</label>
         </div>
     
@@ -73,8 +82,16 @@
 
 {% for notes in notes %}
 <div>
-    {{ notes.title }}
-    {{ notes.note }}
+    <div class="note-field">
+        <div class="title">
+            <h5> {{ notes.title }}</h5>
+        </div>
+        <div class="note">
+            <p>{{ notes.note }}</p>
+        </div>
+    </div>
+    
+    
 </div>
 {% endfor %}
 
